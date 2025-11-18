@@ -3,39 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CardOmi – AI 名片掃描與管理工具</title>
 
-  <title>CardOmi – AI 名片掃描與管理工具 | AI Business Card Scanner</title>
+  <!-- Basic SEO -->
+  <meta name="description" content="CardOmi 是一款專為商務人士打造的 AI 名片掃描與管理工具，支援中文、英文、日文、韓文等多國語言辨識，快速建立你的數位聯絡資料庫。">
+  <meta name="keywords" content="CardOmi, 名片掃描, AI 名片, Business Card Scanner, OCR, 多語辨識, AI 名片管理">
 
-  <meta name="description"
-        content="CardOmi 是一款專為商務人士打造的 AI 名片掃描與管理工具。支援批次掃描、多語辨識，幫你把紙本名片快速整理成 iPhone 聯絡人。免費版可使用完整掃描功能，升級 Pro 可移除廣告並享有更順暢體驗。" />
-  <meta name="keywords"
-        content="CardOmi, AI 名片掃描, 名片管理, business card scanner, OCR, 多語辨識, iPhone 名片匯入" />
-
+  <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="CardOmi – AI 名片掃描與管理工具" />
-  <meta property="og:description"
-        content="拍照或匯入相簿，AI 自動辨識姓名、電話、公司、Email 等資訊，幫你快速建立數位聯絡人資料庫。" />
-  <meta property="og:image" content="https://lowcodeboy-cmd.github.io/cardomi-website/cardomi-og.png" />
+  <meta property="og:description" content="拍照或匯入相簿，AI 自動辨識姓名、電話、公司、電子郵件等關鍵資訊，並支援中英日韓多語名片。">
+  <meta property="og:image" content="https://lowcodeboy-cmd.github.io/cardomi-privacy/cardomi-og.png" />
   <meta property="og:url" content="https://lowcodeboy-cmd.github.io/cardomi-website/" />
-  
-  <meta name="apple-itunes-app"
-        content="app-id=6751880141, app-argument=https://apps.apple.com/app/id6751880141" />
 
   <style>
     :root {
-      --bg: #05070a;
-      --bg-soft: #10131a;
-      --card: #151924;
-      --border: #262b3a;
-      --primary: #2f86ff;
-      --primary-soft: rgba(47, 134, 255, 0.16);
-      --accent: #ffc857;
-      --text-main: #f5f7ff;
-      --text-sub: #a8b2cc;
-      --text-mute: #6c7691;
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.1);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
       --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+      --radius-xl: 26px;
     }
 
     * {
@@ -44,16 +36,15 @@
 
     body {
       margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, system-ui, -system-ui,
-        "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: radial-gradient(circle at top, #1b2640 0, #05070a 52%);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+      "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #020617 100%);
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     a {
-      color: var(--primary);
+      color: var(--accent);
       text-decoration: none;
     }
 
@@ -64,51 +55,68 @@
     .page {
       max-width: 1080px;
       margin: 0 auto;
-      padding: 24px 20px 60px;
+      padding: 24px 16px 56px;
     }
 
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 32px;
+      gap: 16px;
+      padding: 4px 0 20px;
     }
 
-    .logo-group {
+    .logo {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .logo-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
-      background: radial-gradient(circle at 20% 10%, #ffe9a3 0, #f7c35a 32%, #f1923a 70%, #8e4bff 100%);
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 20%, #4adeff, #0ea5e9 40%, #0f172a 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
-      font-weight: 800;
-      font-size: 18px;
-      color: #1b1b1b;
+      box-shadow: 0 0 22px rgba(56,189,248,0.6);
     }
 
-    .logo-text-main {
-      font-weight: 650;
+    .logo-mark span {
+      width: 22px;
+      height: 14px;
+      border-radius: 6px;
+      border: 2px solid white;
+      border-top-width: 0;
+      border-left-width: 0;
+      transform: skewX(-10deg);
+    }
+
+    .logo-title {
+      font-weight: 700;
       letter-spacing: 0.03em;
     }
 
-    .logo-text-sub {
-      color: var(--text-mute);
-      font-size: 13px;
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      padding: 24px 20px 32px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, #0f172a 0, #020617 70%);
+      border: 1px solid rgba(148,163,184,0.15);
+      box-shadow:
+        0 20px 45px rgba(15,23,42,0.9),
+        0 0 0 1px rgba(15,23,42,0.9);
     }
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      font-size: 14px;
-      color: var(--text-sub);
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 20px 16px 26px;
+      }
     }
 
     .badge {
@@ -117,644 +125,532 @@
       gap: 6px;
       padding: 4px 10px;
       border-radius: 999px;
-      font-size: 11px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      background: rgba(15, 128, 255, 0.12);
-      border: 1px solid rgba(92, 163, 255, 0.45);
-      color: #dbe8ff;
-      margin-bottom: 14px;
-    }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #39e58c;
-      box-shadow: 0 0 8px rgba(57, 229, 140, 0.8);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-      gap: 32px;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-
-    .hero-title {
-      font-size: clamp(30px, 4vw, 38px);
-      line-height: 1.25;
-      margin: 0 0 14px 0;
-    }
-
-    .hero-title span {
-      background: linear-gradient(120deg, #ffd66b, #ff9f5b, #6ab8ff);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-desc {
-      color: var(--text-sub);
-      font-size: 15px;
-      margin-bottom: 18px;
-    }
-
-    .hero-bullets {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 20px;
-      color: var(--text-sub);
-      font-size: 14px;
-    }
-
-    .hero-bullets li {
-      position: relative;
-      padding-left: 18px;
-      margin-bottom: 6px;
-    }
-
-    .hero-bullets li::before {
-      content: "•";
-      position: absolute;
-      left: 3px;
-      color: var(--accent);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
+      border: 1px solid rgba(148,163,184,0.4);
+      background-color: rgba(15,23,42,0.9);
+      font-size: 12px;
+      color: var(--text-muted);
       margin-bottom: 10px;
     }
 
-    .btn-primary {
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #22c55e, #16a34a);
+      box-shadow: 0 0 10px rgba(34,197,94,0.8);
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 3vw, 32px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin: 0 0 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-highlight {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      font-size: 13px;
+      color: var(--accent);
+      background-color: var(--accent-soft);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(56,189,248,0.4);
+      margin-bottom: 18px;
+    }
+
+    .store-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .store-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 10px 18px;
+      padding: 8px 14px;
       border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      background: linear-gradient(135deg, #2f86ff, #2460ff);
-      color: white;
-      font-size: 14px;
-      font-weight: 600;
-      box-shadow: 0 10px 25px rgba(25, 75, 155, 0.8);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .btn-primary span.icon {
-      font-size: 16px;
-    }
-
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 9px 15px;
-      border-radius: 999px;
-      border: 1px solid rgba(143, 159, 196, 0.6);
-      background: rgba(7, 9, 14, 0.8);
-      color: var(--text-sub);
+      border: 1px solid rgba(148,163,184,0.4);
       font-size: 13px;
-      cursor: pointer;
+      color: var(--text-main);
+      background: linear-gradient(to bottom right, #020617, #0b1120);
+    }
+
+    .store-btn span {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: block;
+      line-height: 1.2;
+    }
+
+    .store-btn strong {
+      font-size: 13px;
+    }
+
+    .store-btn:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.35);
       text-decoration: none;
     }
 
     .hero-note {
       font-size: 12px;
-      color: var(--text-mute);
+      color: var(--text-muted);
     }
 
     .hero-card {
-      border-radius: 24px;
-      background: radial-gradient(circle at top left, #293452 0, #10131a 52%);
-      border: 1px solid rgba(102, 122, 170, 0.4);
-      box-shadow: var(--shadow-soft);
-      padding: 18px 18px 16px;
       position: relative;
+      border-radius: 24px;
+      padding: 18px 18px 20px;
+      background: radial-gradient(circle at top, #020617 0, #020617 35%, #020617 100%);
+      border: 1px solid rgba(148,163,184,0.25);
       overflow: hidden;
+      min-height: 220px;
     }
 
-    .hero-card-tag {
+    .hero-card-bg {
       position: absolute;
-      top: 14px;
-      right: 18px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 11px;
-      color: var(--text-sub);
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0, rgba(56,189,248,0.25), transparent 55%),
+        radial-gradient(circle at 90% 80%, rgba(56,189,248,0.2), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
     }
 
-    .hero-card-main {
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
       display: flex;
+      flex-direction: column;
       gap: 14px;
-      align-items: center;
-      margin-bottom: 12px;
     }
 
-    .hero-card-thumb {
-      width: 72px;
-      height: 72px;
+    .hero-preview {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .preview-icon {
+      width: 54px;
+      height: 54px;
       border-radius: 18px;
-      background: #07090f;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(148,163,184,0.55);
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #0ea5e9 40%, #020617 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      box-shadow: 0 14px 30px rgba(15,23,42,0.85);
     }
 
-    .hero-card-thumb-inner {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
-      background: linear-gradient(145deg, #f2f3ff, #d3e0ff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #3d3d3d;
-      font-size: 11px;
-      font-weight: 600;
-      text-align: center;
-      padding: 8px;
+    .preview-icon-inner {
+      width: 32px;
+      height: 22px;
+      border-radius: 10px;
+      border: 2px solid white;
+      border-left-width: 0;
+      border-top-width: 0;
+      transform: skewX(-12deg);
+      position: relative;
     }
 
-    .hero-card-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 4px;
+    .preview-icon-inner::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 2px solid white;
     }
 
-    .hero-card-sub {
-      font-size: 13px;
-      color: var(--text-sub);
-      margin-bottom: 6px;
+    .preview-lines {
+      flex: 1;
+      font-size: 12px;
     }
 
-    .hero-card-pill {
-      display: inline-flex;
-      gap: 6px;
-      font-size: 11px;
-      color: var(--text-mute);
-    }
-
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-bottom: 6px;
-      font-size: 11px;
-    }
-
-    .hero-metric {
-      padding: 7px 8px;
-      border-radius: 11px;
-      background: rgba(3, 5, 9, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    .hero-metric-label {
-      color: var(--text-mute);
-      font-size: 10px;
+    .preview-lines strong {
+      display: block;
       margin-bottom: 2px;
     }
 
-    .hero-metric-value {
-      font-weight: 600;
-      color: #eaf1ff;
-    }
-
-    .hero-card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 6px;
-      font-size: 11px;
-      color: var(--text-mute);
-    }
-
-    .hero-card-badge {
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(57, 229, 140, 0.12);
-      color: #8df2b8;
-      border: 1px solid rgba(57, 229, 140, 0.5);
-      font-size: 10px;
-    }
-
-    section {
-      margin-bottom: 36px;
-    }
-
-    h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .section-desc {
-      color: var(--text-sub);
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: rgba(10, 13, 20, 0.96);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      padding: 16px 16px 14px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
-      font-size: 14px;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 6px;
-      font-size: 15px;
-    }
-
-    .pill {
+    .preview-tag {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 8px;
+      padding: 4px 9px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.04);
+      background-color: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.4);
       font-size: 11px;
-      color: var(--text-mute);
-      margin-bottom: 6px;
+      color: var(--text-muted);
     }
 
-    .feature-list {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--text-sub);
+    .lang-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .lang-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background-color: rgba(15,23,42,0.95);
+    }
+
+    .section {
+      margin-top: 32px;
+      padding: 22px 20px 20px;
+      border-radius: var(--radius-lg);
+      background-color: var(--bg-alt);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .section p {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .features-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .feature-card {
+      border-radius: 14px;
+      background-color: #020617;
+      border: 1px solid rgba(31,41,55,0.9);
+      padding: 10px 11px 11px;
       font-size: 13px;
     }
 
-    .feature-list li {
+    .feature-title {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .feature-desc {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .lang-copy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .lang-copy-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .lang-card {
+      border-radius: 16px;
+      background-color: #020617;
+      border: 1px solid rgba(31,41,55,0.9);
+      padding: 12px 13px 13px;
+      font-size: 13px;
+    }
+
+    .lang-label {
+      font-size: 12px;
+      color: var(--accent);
       margin-bottom: 4px;
     }
 
-    .tagline {
+    .lang-card p {
       font-size: 13px;
-      color: var(--text-sub);
-    }
-
-    .lang-toggle-note {
-      font-size: 12px;
-      color: var(--text-mute);
-      margin-bottom: 6px;
-    }
-
-    .lang-columns {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      font-size: 13px;
-      color: var(--text-sub);
-    }
-
-    .lang-box {
-      background: rgba(8, 10, 16, 0.96);
-      border-radius: var(--radius-md);
-      border: 1px dashed rgba(90, 102, 132, 0.7);
-      padding: 12px 13px;
-      white-space: pre-wrap;
+      margin-bottom: 4px;
     }
 
     footer {
-      margin-top: 40px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(70, 80, 108, 0.6);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
       font-size: 12px;
-      color: var(--text-mute);
+      color: var(--text-muted);
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: space-between;
-      align-items: center;
     }
 
-    footer .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    @media (max-width: 820px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-card {
-        order: -1;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .grid-3 {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .grid-2 {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .lang-columns {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    footer a {
+      font-size: 12px;
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="logo-group">
-        <div class="logo-icon">C</div>
-        <div>
-          <div class="logo-text-main">CardOmi</div>
-          <div class="logo-text-sub">AI 名片掃描與聯絡人管理</div>
-        </div>
+<div class="page">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <div class="logo-mark">
+        <span></span>
       </div>
-      <nav class="nav-links">
-        <a href="#features">功能 Features</a>
-        <a href="#pricing">免費與 Pro</a>
-        <a href="#privacy">隱私與安全</a>
-        <a href="#multi-lang">Multi-language</a>
-      </nav>
-    </header>
+      <div>
+        <div class="logo-title">CardOmi</div>
+        <div style="font-size:11px;color:#9ca3af;">AI 名片掃描與管理工具</div>
+      </div>
+    </div>
+  </header>
 
-    <main>
-      <!-- Hero -->
-      <section class="hero">
-        <div>
-          <div class="badge">
-            <span class="badge-dot"></span>
-            <span>AI Business Card Scanner · iOS</span>
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        支援中英日韓的 AI 名片掃描
+      </div>
+      <h1 class="hero-title">一掃就整理好的多語名片管理工具</h1>
+      <p class="hero-subtitle">
+        CardOmi 專為經常交換名片的商務與創業者設計。只要拍照或匯入相簿，AI 便能自動辨識姓名、電話、公司、電子郵件等關鍵資訊，
+        並整理成可搜尋、可匯出的數位聯絡人。
+      </p>
+      <div class="hero-highlight">
+        <span>📇 支援中文・英文・日文・韓文名片</span>
+        <span>｜</span>
+        <span>批次掃描 · 自動分類 · 一鍵匯出聯絡人</span>
+      </div>
+
+      <div class="store-buttons">
+        <a class="store-btn" href="https://apps.apple.com/tw/app/cardomi-ai-%E5%90%8D%E7%89%87%E6%8E%83%E6%8F%8F%E8%88%87%E7%AE%A1%E7%90%86/id6751880141" target="_blank" rel="noopener">
+          <div>
+            <span>在台灣 App Store 下載</span>
+            <strong>Download on the App Store (TW)</strong>
           </div>
-          <h1 class="hero-title">
-            拍照就完成輸入，<span>CardOmi</span> 幫你整理所有名片。
-          </h1>
-          <p class="hero-desc">
-            CardOmi 是一款專為商務人士打造的 AI 名片掃描與管理工具。只要拍照或匯入相簿，AI 就能自動辨識姓名、電話、公司、電子郵件等關鍵資訊，並整理成數位聯絡資料，快速新增到 iPhone 聯絡人。
-          </p>
-          <ul class="hero-bullets">
-            <li>支援批次掃描、多語辨識（中文 / 英文 / 日文 / 韓文）。</li>
-            <li>免費版可使用完整掃描功能，升級 Pro 可移除廣告並提高每日辨識上限。</li>
-            <li>名片影像保留在裝置端，透過加密傳輸與安全雲端服務進行辨識。</li>
-          </ul>
-          <div class="hero-actions">
-            <a class="btn-primary"
-               href="https://apps.apple.com/us/app/cardomi-ai-business-card-scanner/id6751880141"
-               target="_blank" rel="noopener">
-              <span class="icon"></span>
-              <span>Download on the App Store</span>
-            </a>
-            <a class="btn-ghost"
-               href="https://apps.apple.com/tw/app/cardomi-ai-%E5%90%8D%E7%89%87%E6%8E%83%E6%8F%8F%E8%88%87%E7%AE%A1%E7%90%86/id6751880141"
-               target="_blank" rel="noopener">
-              查看中文商店頁面
-            </a>
-          </div>
-          <div class="hero-note">
-            Available on iPhone · 支援繁體中文介面與多國語系名片內容辨識
-          </div>
-        </div>
-
-        <!-- Hero preview card -->
-        <div class="hero-card" aria-hidden="true">
-          <div class="hero-card-tag">Live Preview · Demo</div>
-          <div class="hero-card-main">
-            <div class="hero-card-thumb">
-              <div class="hero-card-thumb-inner">
-                AI 讀取中…<br />
-                林志昱｜行銷經理<br />
-                02-1234-5678
-              </div>
-            </div>
-            <div>
-              <div class="hero-card-title">名片資訊已擷取完成</div>
-              <div class="hero-card-sub">一鍵確認後即可新增到 iPhone 聯絡人。</div>
-              <div class="hero-card-pill">
-                <span>🔎 AI OCR</span>
-                <span>•</span>
-                <span>批次處理模式</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-metrics">
-            <div class="hero-metric">
-              <div class="hero-metric-label">今日已辨識</div>
-              <div class="hero-metric-value">24 / 50 張</div>
-            </div>
-            <div class="hero-metric">
-              <div class="hero-metric-label">支援語言</div>
-              <div class="hero-metric-value">中 / 英 / 日 / 韓</div>
-            </div>
-            <div class="hero-metric">
-              <div class="hero-metric-label">批次模式</div>
-              <div class="hero-metric-value">Pro 解鎖</div>
-            </div>
-          </div>
-
-          <div class="hero-card-footer">
-            <div>掃描 → 校正 → 文字辨識 → 建立聯絡人，全流程自動化。</div>
-            <div class="hero-card-badge">免費下載 · 含廣告</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Features -->
-      <section id="features">
-        <h2>主要功能 Features</h2>
-        <p class="section-desc">
-          專為經常交換名片的商務人士設計，讓你從「拍照」到「新增聯絡人」只要幾秒鐘。
-        </p>
-
-        <div class="grid-3">
-          <div class="card">
-            <div class="pill">即拍即辨識 · Instant Scan</div>
-            <h3>拍照或匯入，相機一按就完成輸入</h3>
-            <ul class="feature-list">
-              <li>拍攝名片後，自動偵測版面與方向，校正與裁切。</li>
-              <li>AI 辨識姓名、電話、公司、職稱、電子郵件等欄位。</li>
-              <li>避免手動逐字輸入，大量節省整理時間。</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <div class="pill">批次掃描 · Batch Mode</div>
-            <h3>一次處理一疊名片，適合展場與大型活動</h3>
-            <ul class="feature-list">
-              <li>支援一次匯入多張名片影像，串流式處理避免記憶體爆掉。</li>
-              <li>Pro 版可解鎖更高的每日辨識上限與批次模式。</li>
-              <li>處理進度與失敗張數清楚顯示，方便再次確認。</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <div class="pill">智慧整理 · Smart Contacts</div>
-            <h3>自動整理成乾淨的聯絡人資料</h3>
-            <ul class="feature-list">
-              <li>將辨識結果整理成結構化欄位，可一鍵新增至 iPhone 通訊錄。</li>
-              <li>支援搜尋、排序與標記，方便日後查找人脈。</li>
-              <li>搭配 iOS 原生聯絡人功能使用，無需額外學習成本。</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Free vs Pro -->
-      <section id="pricing">
-        <h2>免費版與 Pro 版</h2>
-        <p class="section-desc">
-          CardOmi 讓你可以先免費體驗完整的掃描流程，再依需求決定是否升級 Pro。
-        </p>
-
-        <div class="grid-2">
-          <div class="card">
-            <div class="pill">Free Plan · 免費版</div>
-            <h3>免費開始使用，含廣告</h3>
-            <ul class="feature-list">
-              <li>可使用完整名片掃描與 AI 辨識流程。</li>
-              <li>支援多語辨識與新增到 iPhone 聯絡人。</li>
-              <li>畫面會顯示廣告，以維持服務營運。</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <div class="pill">CardOmi Pro · 訂閱方案</div>
-            <h3>移除廣告並獲得更順暢體驗</h3>
-            <ul class="feature-list">
-              <li>移除 App 內廣告，介面更清爽。</li>
-              <li>提升每日可辨識張數上限（具體數量以 App 內說明為準）。</li>
-              <li>解鎖批次模式與未來更多進階功能。</li>
-            </ul>
-            <p class="tagline">
-              訂閱管理與取消方式皆透過 Apple App Store 的「訂閱項目」頁面進行。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Privacy & Security -->
-      <section id="privacy">
-        <h2>隱私與安全 Privacy &amp; Security</h2>
-        <p class="section-desc">
-          我們重視你的名片與人脈資料。CardOmi 透過安全的雲端服務進行 AI 辨識與資料整理，並使用加密連線傳輸資料。
-        </p>
-
-        <div class="grid-2">
-          <div class="card">
-            <h3>資料處理方式</h3>
-            <ul class="feature-list">
-              <li>名片影像保留在你的裝置內，由 App 規劃儲存與清理機制。</li>
-              <li>在需要 AI 辨識時，僅傳送必要的辨識內容至伺服器處理。</li>
-              <li>伺服器端透過安全機制保護 API 與存取權限。</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>隱私權政策與使用條款</h3>
-            <p class="tagline">
-              詳細內容請參考以下文件：
-            </p>
-            <ul class="feature-list">
-              <li>
-                隱私權政策：
-                <a href="https://lowcodeboy-cmd.github.io/cardomi-privacy/" target="_blank" rel="noopener">
-                  https://lowcodeboy-cmd.github.io/cardomi-privacy/
-                </a>
-              </li>
-              <li>
-                使用條款 / EULA：
-                <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">
-                  Apple 標準 EULA
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Multi-language copy -->
-      <section id="multi-lang">
-        <h2>多國語系行銷文案 · Multi-language Store Copy</h2>
-        <p class="lang-toggle-note">
-          下面是 CardOmi 在各語系 App Store 可使用的簡短描述文案（方便未來調整與複製）。
-        </p>
-
-        <div class="lang-columns">
-          <div class="lang-box">
-【繁體中文】
-CardOmi 是一款專為商務人士打造的 AI 名片掃描與管理工具。
-只要拍照或匯入相簿，AI 便能自動辨識姓名、電話、公司、電子郵件等關鍵資訊，並自動整理成數位聯絡資料。從此擺脫手動輸入與名片堆積的困擾，讓人脈管理更快速、更智慧。
-          </div>
-
-          <div class="lang-box">
-【English】
-CardOmi is an AI-powered business card scanner and contact manager designed for professionals.
-Simply take a photo or import from your gallery, and CardOmi automatically recognizes key details like name, phone number, company, and email, then turns them into clean digital contacts so you can stop typing everything by hand.
-          </div>
-
-          <div class="lang-box">
-【日本語】
-CardOmi は、ビジネスパーソンのために作られた AI 名刺スキャナー &amp; 管理アプリです。
-名刺を撮影するかアルバムから読み込むだけで、氏名・電話番号・会社名・メールアドレスなどの情報を自動で認識し、デジタル連絡先として整理します。もう名刺の山と手入力に悩まされる必要はありません。
-          </div>
-
-          <div class="lang-box">
-【한국어】
-CardOmi 는 비즈니스 사용자를 위해 설계된 AI 명함 스캔 &amp; 관리 도구입니다.
-명함을 촬영하거나 앨범에서 가져오기만 하면, AI 가 이름·전화번호·회사·이메일 등의 정보를 자동으로 인식하고 깔끔한 디지털 연락처로 정리해 줍니다. 이제 명함을 수동으로 입력하고 쌓아둘 필요가 없습니다.
-          </div>
-
-          <div class="lang-box">
-【简体中文】
-CardOmi 是一款专为商务人士打造的 AI 名片扫描与管理工具。
-只需拍照或从相册导入，AI 就能自动识别姓名、电话、公司、电子邮件等关键信息，并整理成数字联系人，让你告别手动输入和堆积如山的纸本名片。
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div>© 2025 CardOmi · Independent iOS Developer</div>
-      <div class="links">
-        <a href="https://lowcodeboy-cmd.github.io/cardomi-privacy/" target="_blank" rel="noopener">Privacy Policy</a>
-        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">
-          Terms of Service / EULA
         </a>
-        <a href="mailto:lowcodeboy@gmail.com">Contact: lowcodeboy@gmail.com</a>
+        <a class="store-btn" href="https://apps.apple.com/us/app/cardomi-ai-business-card-scanner/id6751880141" target="_blank" rel="noopener">
+          <div>
+            <span>Global Store</span>
+            <strong>Download on the App Store (US)</strong>
+          </div>
+        </a>
       </div>
-    </footer>
-  </div>
+
+      <div class="hero-note">
+        免費版可使用完整掃描功能（含廣告），升級 CardOmi Pro 可移除廣告、啟用批次模式並享更高每日辨識上限。
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="CardOmi 多語名片示意">
+      <div class="hero-card-bg"></div>
+      <div class="hero-card-inner">
+        <div class="hero-preview">
+          <div class="preview-icon">
+            <div class="preview-icon-inner"></div>
+          </div>
+          <div class="preview-lines">
+            <strong>林志昊 / Product Manager</strong>
+            <div style="font-size:11px;color:#9ca3af;">
+              +886 912 345 678 · hello@example.com<br/>
+              CardOmi Inc. · Taipei / Tokyo / Seoul
+            </div>
+          </div>
+        </div>
+        <div class="preview-tag">
+          <span>✅ AI 已自動辨識並整理聯絡人</span>
+        </div>
+        <div class="lang-badges">
+          <span class="lang-pill">繁體中文</span>
+          <span class="lang-pill">简体中文</span>
+          <span class="lang-pill">English</span>
+          <span class="lang-pill">日本語</span>
+          <span class="lang-pill">한국어</span>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- Features -->
+  <section class="section" id="features">
+    <h2>主要功能</h2>
+    <p>
+      CardOmi 讓你從「拍照」到「整理聯絡人」一次完成，不再需要手動輸入一堆欄位。
+    </p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-title">即拍即辨識</div>
+        <div class="feature-desc">
+          拍攝名片或從相簿匯入後，AI 會自動擷取姓名、職稱、電話、公司、電子郵件與地址等欄位。
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">批次掃描</div>
+        <div class="feature-desc">
+          一次匯入多張名片，CardOmi 會逐張處理、即時更新進度，適合展場或大量名片整理。
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">智慧整理</div>
+        <div class="feature-desc">
+          支援搜尋與簡單分組管理，讓人脈不再只是散落在抽屜或拍照備份裡。
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">匯出聯絡人</div>
+        <div class="feature-desc">
+          一鍵將辨識完成的資料新增到 iPhone 聯絡人，或後續整合聯絡人 App 使用。
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">多語辨識</div>
+        <div class="feature-desc">
+          針對中英日韓等常見語系優化 OCR，適合跨國團隊、代理商、出差與展會使用。
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">符合你需求的模式</div>
+        <div class="feature-desc">
+          免費版可體驗所有核心功能；升級 Pro 可移除廣告、啟用批次模式並提高每日辨識上限。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Multi-language Support -->
+  <section class="section" id="multilang">
+    <h2>多語言支援 · Multi-language OCR</h2>
+    <p>
+      CardOmi 針對亞洲與國際常用語系進行優化，目前支援：
+    </p>
+    <ul style="margin:6px 0 10px 18px;font-size:14px;color:var(--text-muted);padding-left:16px;">
+      <li>繁體中文 / 簡體中文</li>
+      <li>英文（含國際商務名片常見格式）</li>
+      <li>日文名片（含公司職稱與假名標註）</li>
+      <li>韓文名片（包含手機與代表號欄位）</li>
+    </ul>
+    <p>
+      無論是在台灣與香港接待國際客戶，或在日本、韓國參展交流，CardOmi 都能協助你快速把紙本名片變成可搜尋、可備份的數位聯絡資料。
+    </p>
+  </section>
+
+  <!-- Short multi-language marketing copy (for users & SEO) -->
+  <section class="section" id="global-copy">
+    <h2>CardOmi in 5 Languages</h2>
+    <p>
+      以下是 CardOmi 在不同語言中的簡短介紹，方便分享給你的國際同事與朋友。
+    </p>
+
+    <div class="lang-copy-grid">
+      <div class="lang-card">
+        <div class="lang-label">繁體中文</div>
+        <p>
+          CardOmi 是一款專為商務人士打造的 AI 名片掃描與管理工具。只要拍照或匯入相簿，AI 便能自動辨識姓名、電話、公司、電子郵件等關鍵資訊，並整理成數位聯絡資料。
+        </p>
+        <p>
+          免費版提供完整掃描功能（含廣告），升級 CardOmi Pro 可移除廣告、啟用批次模式並享有更高每日辨識上限。
+        </p>
+      </div>
+
+      <div class="lang-card">
+        <div class="lang-label">English</div>
+        <p>
+          CardOmi is an AI-powered business card scanner and contact manager designed for professionals. Simply take a photo or import from your gallery, and AI will recognize key details such as name, phone number, company, and email, then turn them into clean digital contacts.
+        </p>
+        <p>
+          The free version includes full scanning features with ads. Upgrading to CardOmi Pro removes ads, unlocks batch mode, and increases your daily recognition limit.
+        </p>
+      </div>
+
+      <div class="lang-card">
+        <div class="lang-label">日本語</div>
+        <p>
+          CardOmi は、ビジネスパーソンのために作られた AI 名刺スキャナー &amp; 管理アプリです。名刺を撮影するかアルバムから読み込むだけで、氏名・電話番号・会社名・メールアドレスなどの情報を自動で認識し、デジタル連絡先として整理します。
+        </p>
+        <p>
+          無料版では広告付きで主要機能を利用でき、CardOmi Pro にアップグレードすると広告が非表示になり、一括スキャンやより高い1日あたりの認識上限が利用できます。
+        </p>
+      </div>
+
+      <div class="lang-card">
+        <div class="lang-label">한국어</div>
+        <p>
+          CardOmi 는 비즈니스 사용자를 위해 설계된 AI 명함 스캔 &amp; 관리 도구입니다. 명함을 촬영하거나 앨범에서 가져오기만 하면, AI 가 이름·전화번호·회사·이메일 등의 정보를 자동으로 인식하고 깔끔한 디지털 연락처로 정리해 줍니다.
+        </p>
+        <p>
+          무료 버전에서는 광고와 함께 모든 핵심 기능을 사용할 수 있으며, CardOmi Pro 로 업그레이드하면 광고가 제거되고, 일괄 스캔 모드와 더 높은 일일 인식 한도를 이용할 수 있습니다.
+        </p>
+      </div>
+
+      <div class="lang-card">
+        <div class="lang-label">简体中文</div>
+        <p>
+          CardOmi 是一款专为商务人士打造的 AI 名片扫描与管理工具。只要拍照或从相册导入，AI 就能自动识别姓名、电话、公司、电子邮箱等关键信息，并整理成数字化联系人。
+        </p>
+        <p>
+          免费版提供完整扫描功能（含广告），升级 CardOmi Pro 可移除广告、开启批量模式，并获得更高的每日识别上限。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy & Links -->
+  <section class="section" id="legal">
+    <h2>隱私與安全</h2>
+    <p>
+      CardOmi 透過安全的雲端伺服器進行 AI 辨識與資料處理，名片影像則儲存在你的裝置或信任的雲端儲存中。
+      資料傳輸過程使用加密通訊協定，避免第三方竊取。
+    </p>
+    <p style="margin-top:10px;">
+      隱私權政策：
+      <a href="https://lowcodeboy-cmd.github.io/cardomi-privacy/" target="_blank" rel="noopener">
+        https://lowcodeboy-cmd.github.io/cardomi-privacy/
+      </a>
+      <br/>
+      使用條款 / EULA：
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">
+        Apple 標準 EULA
+      </a>
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>© 2025 CardOmi · Independent iOS Developer</div>
+    <div>
+      <a href="mailto:lowcodeboy@gmail.com">Contact: lowcodeboy@gmail.com</a>
+    </div>
+  </footer>
+
+</div>
 </body>
 </html>
